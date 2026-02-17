@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HANZZ TKA TRYOUT - PAKET 1 & 2</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== CSS SAMA SEPERTI SEBELUMNYA ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        /* LOGIN PAGE */
+        .login-container {
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 50px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .welcome-box {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+        }
+        .login-container h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .login-container h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .login-container .sub {
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .token-box {
+            background: #f1f5f9;
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px dashed #94a3b8;
+        }
+        .token-label {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .token-value {
+            font-family: monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #2563eb;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 60px;
+            border: 2px solid #cbd5e1;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            outline: none;
+            transition: 0.15s;
+            background: white;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+        }
+        .gender-group {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .gender-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: #334155;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .gender-group input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #2563eb;
+        }
+        .tanggal-lahir {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tanggal-lahir select {
+            flex: 1;
+            min-width: 100px;
+        }
+        .btn-login {
+            background: #2563eb;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 70px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #1e40af;
+            transition: 0.1s;
+            margin-top: 15px;
+        }
+        .btn-login:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #1e40af;
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 1rem;
+            margin-top: 15px;
+            min-height: 20px;
+            text-align: center;
+        }
+        .penalty-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #b91c1c;
+            padding: 15px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        /* HOME PAGE */
+        .home-container {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 50px 40px;
+            text-align: center;
+            display: none;
+        }
+        .home-container h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        .home-container h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .home-container .sub {
+            color: #64748b;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+        .card-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .home-card {
+            background: #f8fafc;
+            width: 220px;
+            padding: 30px 15px;
+            border-radius: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: all 0.25s;
+            border: 2px solid transparent;
+        }
+        .home-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(37,99,235,0.1);
+        }
+        .home-card i {
+            font-size: 3rem;
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+        .home-card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+        .home-card p {
+            color: #475569;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .badge {
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .badge-purple {
+            background: #8b5cf6;
+        }
+        /* MODAL SIAP */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-card {
+            background: white;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 40px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .modal-card i {
+            font-size: 4rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+        .modal-card h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        .modal-card p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+        .modal-btn {
+            background: #10b981;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #059669;
+            transition: 0.1s;
+            width: 100%;
+        }
+        .modal-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #059669;
+        }
+        /* MODAL SELESAI */
+        #modalSelesai .modal-card i {
+            color: #f59e0b;
+        }
+        #modalSelesai .modal-btn {
+            background: #f59e0b;
+            box-shadow: 0 6px 0 #d97706;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .modal-actions .modal-btn {
+            width: auto;
+            padding: 14px 30px;
+            font-size: 1.3rem;
+        }
+        .modal-actions .modal-btn.secondary {
+            background: #94a3b8;
+            box-shadow: 0 6px 0 #64748b;
+        }
+        /* SOAL PAGE */
+        .soal-page {
+            display: none;
+        }
+        .header-card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 10px solid #2563eb;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-card h2 i {
+            color: #2563eb;
+            font-size: 2.2rem;
+        }
+        .user-info {
+            background: #f1f5f9;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            color: #1e293b;
+            border: 2px solid #cbd5e1;
+        }
+        .timer {
+            background: #f1f5f9;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+            border: 2px solid #cbd5e1;
+            letter-spacing: 1px;
+        }
+        .soal-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .soal-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e9eef3;
+        }
+        .soal-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .soal-nomor {
+            background: #2563eb;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 12px rgba(37,99,235,0.25);
+        }
+        .soal-tipe {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .soal-gambar {
+            margin: 15px 0 20px;
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+            color: #334155;
+            font-size: 1.1rem;
+        }
+        .soal-gambar i {
+            font-size: 3.5rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        .soal-gambar img {
+            max-width: 100%;
+            max-height: 220px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+        .soal-teks {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #1e293b;
+            margin: 15px 0 25px;
+            white-space: pre-line;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 18px;
+            border-left: 6px solid #2563eb;
+        }
+        .opsi {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .opsi-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #f9fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 14px 22px;
+            cursor: pointer;
+            transition: 0.15s;
+            font-size: 1.05rem;
+        }
+        .opsi-item:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+        .opsi-item input {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+        .opsi-item label {
+            flex: 1;
+            font-size: 1.05rem;
+            cursor: pointer;
+            color: #1e293b;
+            font-weight: 500;
+        }
+        .btn-submit {
+            background: #10b981;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 70px;
+            width: 100%;
+            max-width: 400px;
+            margin: 35px auto 0;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #059669;
+            transition: 0.1s;
+        }
+        .btn-submit:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #059669;
+        }
+        .btn-submit:disabled {
+            opacity: 0.5;
+            transform: none;
+            box-shadow: 0 8px 0 #059669;
+            pointer-events: none;
+        }
+        /* Hasil panel */
+        .hasil-panel {
+            background: white;
+            border-radius: 32px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        .nilai-box {
+            background: #f1f5f9;
+            padding: 20px 35px;
+            border-radius: 70px;
+            font-size: 2rem;
+            font-weight: 700;
+            display: inline-block;
+            color: #0f172a;
+            border: 2px solid #cbd5e1;
+        }
+        .key-area {
+            background: #f1f5f9;
+            border-radius: 35px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px dashed #94a3b8;
+        }
+        .key-string {
+            font-family: monospace;
+            font-size: 2.2rem;
+            background: white;
+            padding: 12px 30px;
+            border-radius: 60px;
+            display: inline-block;
+            letter-spacing: 4px;
+            border: 2px solid #94a3b8;
+            color: #0f172a;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .exit-form {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 60px;
+        }
+        .exit-form input {
+            flex: 2;
+            min-width: 250px;
+            background: white;
+            border: 2px solid #cbd5e1;
+            padding: 16px 25px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            color: #0f172a;
+            text-align: center;
+            font-family: monospace;
+            outline: none;
+        }
+        .exit-form button {
+            flex: 1;
+            background: #ef4444;
+            border: none;
+            padding: 16px 25px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .exit-form button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #b91c1c;
+        }
+        .peringatan {
+            color: #475569;
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        .soal-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+        .soal-wrapper::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        @media (max-width: 600px) {
+            .login-container { padding: 30px 20px; }
+            .welcome-box { font-size: 1.4rem; padding: 15px; }
+            .token-value { font-size: 1.8rem; letter-spacing: 4px; }
+            .gender-group { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .tanggal-lahir select { min-width: 80px; }
+            .home-card { width: 180px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HALAMAN LOGIN -->
+    <div id="loginPage" class="login-container">
+        <div class="welcome-box">
+            SELAMAT DATANG DI PORTAL TRYOUT TKA BY HANZZ
+        </div>
+        <h1><span>HANZZ</span> TKA TRYOUT</h1>
+        <div class="sub">Masukkan token dan data diri untuk memulai</div>
+        
+        <!-- Penalty Message (hidden by default) -->
+        <div id="penaltyMessage" class="penalty-message" style="display: none;"></div>
+        
+        <div class="token-box">
+            <div class="token-label">Token Akses</div>
+            <div class="token-value" id="tokenDisplay">ABCD12</div>
+        </div>
+        <div class="input-group">
+            <label>Masukkan Token</label>
+            <input type="text" id="tokenInput" placeholder="Salin token di atas" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="namaInput" placeholder="Masukkan nama Anda" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>Jenis Kelamin</label>
+            <div class="gender-group">
+                <label><input type="radio" name="gender" value="Laki-laki" checked> Laki-laki</label>
+                <label><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Tanggal Lahir</label>
+            <div class="tanggal-lahir">
+                <select id="tgl" required>
+                    <option value="">Tanggal</option>
+                </select>
+                <select id="bln" required>
+                    <option value="">Bulan</option>
+                </select>
+                <select id="thn" required>
+                    <option value="">Tahun</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn-login" id="btnLogin">MASUK</button>
+        <div class="error-message" id="loginError"></div>
+    </div>
+
+    <!-- HALAMAN HOME (setelah login) -->
+    <div id="homePage" class="home-container">
+        <h1><span>HANZZ</span> TKA TRYOUT</h1>
+        <div class="sub">Selamat datang, <span id="namaDisplay">User</span>! Pilih paket tryout</div>
+        <div class="card-grid">
+            <!-- Paket 1 -->
+            <div class="home-card" id="btnIndo1">
+                <i class="fas fa-book-open"></i>
+                <h2>B.INDO</h2>
+                <p>Paket 1</p>
+                <div class="badge">30 soal</div>
+            </div>
+            <div class="home-card" id="btnMat1">
+                <i class="fas fa-calculator"></i>
+                <h2>MATEMATIKA</h2>
+                <p>Paket 1</p>
+                <div class="badge">30 soal</div>
+            </div>
+            <!-- Paket 2 by Hanzzy -->
+            <div class="home-card" id="btnIndo2">
+                <i class="fas fa-book-open"></i>
+                <h2>B.INDO</h2>
+                <p>Paket 2</p>
+                <div class="badge badge-purple">by Hanzzy</div>
+            </div>
+            <div class="home-card" id="btnMat2">
+                <i class="fas fa-calculator"></i>
+                <h2>MATEMATIKA</h2>
+                <p>Paket 2</p>
+                <div class="badge badge-purple">by Hanzzy</div>
+            </div>
+        </div>
+        <footer>© HANZZ SECURE • pilih paket untuk memulai</footer>
+    </div>
+
+    <!-- MODAL KONFIRMASI SIAP UJIAN -->
+    <div id="modalSiap" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fas fa-praying-hands"></i>
+            <h3>Apakah Anda Siap?</h3>
+            <p>Berdoa terlebih dahulu sebelum memulai ujian. Setelah tombol ditekan, browser akan terkunci dan masuk mode fullscreen. Jika Anda keluar paksa (membuka tab lain, aplikasi lain, floating window), akan dikenakan sanksi 6 menit tidak bisa mengerjakan.</p>
+            <button class="modal-btn" id="btnMulaiUjian">🔒 Mulai & Kunci Browser</button>
+        </div>
+    </div>
+
+    <!-- MODAL KONFIRMASI SELESAI TRYOUT -->
+    <div id="modalSelesai" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>Yakin ingin menyelesaikan?</h3>
+            <p>Pastikan semua jawaban sudah final. Anda tidak dapat mengubahnya setelah ini.</p>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" id="batalSelesai">Batal</button>
+                <button class="modal-btn" id="konfirmasiSelesai">Ya, Selesai</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HALAMAN SOAL PAKET 1 -->
+    <div id="indoPage1" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-book-open"></i> Bahasa Indonesia Paket 1</h2>
+            <div class="user-info" id="indoUser1">User</div>
+            <div class="timer" id="indoTimer1">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="indoSoalContainer1"></div>
+        <button class="btn-submit" id="submitIndo1">Selesai & Lihat Hasil</button>
+        <div id="indoHasil1" class="hasil-panel" style="display: none;"></div>
+    </div>
+
+    <div id="matPage1" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-calculator"></i> Matematika Paket 1</h2>
+            <div class="user-info" id="matUser1">User</div>
+            <div class="timer" id="matTimer1">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="matSoalContainer1"></div>
+        <button class="btn-submit" id="submitMat1">Selesai & Lihat Hasil</button>
+        <div id="matHasil1" class="hasil-panel" style="display: none;"></div>
+    </div>
+
+    <!-- HALAMAN SOAL PAKET 2 (by Hanzzy) -->
+    <div id="indoPage2" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-book-open"></i> Bahasa Indonesia Paket 2 <span style="background:#8b5cf6; color:white; padding:5px 15px; border-radius:30px; font-size:0.9rem;">by Hanzzy</span></h2>
+            <div class="user-info" id="indoUser2">User</div>
+            <div class="timer" id="indoTimer2">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="indoSoalContainer2"></div>
+        <button class="btn-submit" id="submitIndo2">Selesai & Lihat Hasil</button>
+        <div id="indoHasil2" class="hasil-panel" style="display: none;"></div>
+    </div>
+
+    <div id="matPage2" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-calculator"></i> Matematika Paket 2 <span style="background:#8b5cf6; color:white; padding:5px 15px; border-radius:30px; font-size:0.9rem;">by Hanzzy</span></h2>
+            <div class="user-info" id="matUser2">User</div>
+            <div class="timer" id="matTimer2">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="matSoalContainer2"></div>
+        <button class="btn-submit" id="submitMat2">Selesai & Lihat Hasil</button>
+        <div id="matHasil2" class="hasil-panel" style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // ====================  DATA SOAL PAKET 1 (Sumber: Kompas, Detik, Tribun) ====================
+    
+    // Soal Bahasa Indonesia Paket 1 (berdasarkan teks bacaan dari Kompas [citation:3])
+    const soalIndo1 = [
+        // Teks 1: Perpustakaan Sekolah
+        { tipe: 'pg', teks: 'Bacalah teks berikut!\n\n"Perpustakaan sekolah kini berfungsi sebagai pusat belajar siswa. Selain menyediakan buku pelajaran, perpustakaan juga memiliki koleksi buku pengayaan dan karya sastra. Siswa dapat memanfaatkan fasilitas ini untuk belajar mandiri. Guru sering mendorong siswa mencari referensi tambahan dari perpustakaan. Dengan demikian, perpustakaan berperan penting dalam menunjang kegiatan belajar."\n\nTopik utama teks adalah ...', opsi: [{teks:'Kegiatan guru',nilai:'A'},{teks:'Fungsi perpustakaan sekolah',nilai:'B'},{teks:'Buku pelajaran',nilai:'C'},{teks:'Cara belajar siswa',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-book-open"></i><br>Perpustakaan' },
+        { tipe: 'pg', teks: 'Berdasarkan teks tentang perpustakaan, koleksi yang tersedia di perpustakaan menurut teks adalah ...', opsi: [{teks:'Buku pelajaran saja',nilai:'A'},{teks:'Buku sastra saja',nilai:'B'},{teks:'Berbagai jenis buku',nilai:'C'},{teks:'Buku lama',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-books"></i><br>Koleksi' },
+        { tipe: 'pg', teks: 'Tujuan siswa memanfaatkan perpustakaan berdasarkan teks adalah ...', opsi: [{teks:'Mengisi waktu luang',nilai:'A'},{teks:'Menunjang belajar',nilai:'B'},{teks:'Menjual buku',nilai:'C'},{teks:'Menghindari pelajaran',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-user-graduate"></i><br>Belajar' },
+        { tipe: 'pg', teks: 'Peran guru dalam teks tersebut adalah ...', opsi: [{teks:'Menjaga perpustakaan',nilai:'A'},{teks:'Mengatur jadwal',nilai:'B'},{teks:'Mendorong siswa mencari referensi',nilai:'C'},{teks:'Menyusun koleksi buku',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-chalkboard-teacher"></i><br>Guru' },
+        { tipe: 'pg', teks: 'Ringkasan yang tepat untuk teks tersebut adalah ...', opsi: [{teks:'Siswa gemar membaca',nilai:'A'},{teks:'Perpustakaan menunjang kegiatan belajar',nilai:'B'},{teks:'Buku sastra paling diminati',nilai:'C'},{teks:'Guru wajib ke perpustakaan',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-file-alt"></i><br>Ringkasan' },
+        
+        // Teks 2: Polusi Udara
+        { tipe: 'pg', teks: 'Bacalah teks berikut!\n\n"Polusi udara di kota besar semakin meningkat dari tahun ke tahun. Padatnya kendaraan bermotor menjadi penyumbang utama pencemaran udara. Aktivitas industri juga memperburuk kualitas udara. Kondisi ini berdampak pada kesehatan masyarakat. Anak-anak dan lansia menjadi kelompok yang paling rentan."\n\nMasalah utama yang dibahas adalah ...', opsi: [{teks:'Kemacetan',nilai:'A'},{teks:'Polusi udara',nilai:'B'},{teks:'Sampah kota',nilai:'C'},{teks:'Banjir',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-industry"></i><br>Polusi' },
+        { tipe: 'pg', teks: 'Penyebab utama polusi udara menurut teks adalah ...', opsi: [{teks:'Limbah rumah tangga',nilai:'A'},{teks:'Asap kendaraan dan industri',nilai:'B'},{teks:'Kebakaran hutan',nilai:'C'},{teks:'Debu alami',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-car"></i><br>Kendaraan' },
+        { tipe: 'pg', teks: 'Dampak polusi udara paling rentan dirasakan oleh ...', opsi: [{teks:'Semua kelompok sama',nilai:'A'},{teks:'Anak-anak dan lansia',nilai:'B'},{teks:'Wisatawan',nilai:'C'},{teks:'Pekerja kantor',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-child"></i><br>Anak-anak' },
+        { tipe: 'pg', teks: 'Tujuan penulisan teks tersebut adalah ...', opsi: [{teks:'Menghibur',nilai:'A'},{teks:'Memberi informasi',nilai:'B'},{teks:'Membujuk',nilai:'C'},{teks:'Menceritakan pengalaman',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-info-circle"></i><br>Informasi' },
+        { tipe: 'pg', teks: 'Jenis teks tersebut adalah ...', opsi: [{teks:'Narasi',nilai:'A'},{teks:'Deskripsi',nilai:'B'},{teks:'Eksposisi',nilai:'C'},{teks:'Puisi',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-align-left"></i><br>Eksposisi' },
+        
+        // Soal PGK
+        { tipe: 'pgk', teks: 'Manakah yang termasuk ciri-ciri teks eksposisi? (pilih semua yang benar)', opsi: [{teks:'Bersifat informatif',nilai:'A'},{teks:'Berdasarkan fakta',nilai:'B'},{teks:'Bertujuan meyakinkan',nilai:'C'},{teks:'Menggunakan bahasa kiasan',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-chart-line"></i><br>Eksposisi' },
+        { tipe: 'pgk', teks: 'Unsur-unsur dalam teks berita adalah ... (pilih semua)', opsi: [{teks:'5W+1H',nilai:'A'},{teks:'Judul',nilai:'B'},{teks:'Opini penulis',nilai:'C'},{teks:'Fakta',nilai:'D'}], kunci: ['A','B','D'], gambar: '<i class="fas fa-newspaper"></i><br>Berita' },
+        
+        // Soal BS
+        { tipe: 'bs', teks: 'Teks laporan hasil observasi bertujuan untuk menghibur pembaca. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-clipboard-list"></i><br>Laporan' },
+        { tipe: 'bs', teks: 'Konjungsi "karena" termasuk konjungsi sebab-akibat. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-link"></i><br>Konjungsi' },
+    ];
+
+    // Soal Matematika Paket 1 (Sumber: Detik, Tribun, Defantri [citation:4][citation:5])
+    const soalMat1 = [
+        { tipe: 'pg', teks: 'Hasil dari (-12) : 3 + (-8) x (-5) adalah …\nA. -44\nB. -36\nC. 36\nD. 44', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'D', gambar: '<i class="fas fa-calculator"></i><br>Operasi hitung' },
+        { tipe: 'pg', teks: 'Bentuk sederhana dari $\left( 243^{\frac{1}{3}} \right)^{\frac{3}{5}}$ adalah …\nA. 9\nB. 3\nC. 27\nD. 81', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-square-root-alt"></i><br>Pangkat' },
+        { tipe: 'pg', teks: 'Bangun yang pasti sebangun adalah …\nA. dua persegi panjang\nB. dua persegi\nC. dua trapesium\nD. dua jajaran genjang', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-square"></i><br>Sebangun' },
+        { tipe: 'pg', teks: 'Sebuah dadu dilambungkan satu kali. Peluang muncul mata dadu faktor dari 6 adalah …\nA. 1/6\nB. 1/2\nC. 2/3\nD. 5/6', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-dice"></i><br>Peluang' },
+        { tipe: 'pg', teks: 'Diketahui f(x) = 2x - 3. Nilai f(-1) adalah …\nA. 5\nB. 1\nC. -1\nD. -5', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'D', gambar: '<i class="fas fa-chart-line"></i><br>Fungsi' },
+        { tipe: 'pg', teks: 'Penyelesaian sistem persamaan x + y = 7 dan x - y = 3 adalah …\nA. (2,5)\nB. (5,2)\nC. (-3,10)\nD. (10,-3)', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-th"></i><br>SPLDV' },
+        { tipe: 'pg', teks: 'Kebun berbentuk belah ketupat, panjang kedua diagonalnya 24 m dan 18 m. Di sekelilingnya ditanami pohon dengan jarak antar pohon 3 m. Banyaknya pohon adalah…\nA. 14\nB. 15\nC. 20\nD. 28', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-tree"></i><br>Kebun' },
+        { tipe: 'pg', teks: 'Volume sebuah tabung 1540 cm³. Bila jari-jari tabung 7 cm, maka luas sisi tabung tertutup itu adalah … (π = 22/7)\nA. 748 cm²\nB. 880 cm²\nC. 924 cm²\nD. 1.078 cm²', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-cylinder"></i><br>Tabung' },
+        { tipe: 'pg', teks: 'Dari 143 siswa, 95 siswa senang matematika, 87 siswa senang fisika, dan 60 siswa senang keduanya. Banyak siswa yang tidak senang matematika maupun fisika adalah …\nA. 21 orang\nB. 27 orang\nC. 35 orang\nD. 122 orang', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-users"></i><br>Himpunan' },
+        { tipe: 'pg', teks: 'Persamaan garis melalui titik (-3,2) dan sejajar dengan garis 2x + 3y = 6 adalah …\nA. 2x + 3y = -8\nB. 2x + 3y = 0\nC. 2x - 3y = -4\nD. 2x - 3y = 0', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-chart-line"></i><br>Garis' },
+        
+        // PGK
+        { tipe: 'pgk', teks: 'Bilangan prima antara 10 dan 20 adalah … (pilih semua)', opsi: [{teks:'11',nilai:'A'},{teks:'13',nilai:'B'},{teks:'17',nilai:'C'},{teks:'19',nilai:'D'},{teks:'15',nilai:'E'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-hashtag"></i><br>Prima' },
+        { tipe: 'pgk', teks: 'Sifat-sifat persegi panjang adalah … (pilih semua)', opsi: [{teks:'Sisi berhadapan sejajar',nilai:'A'},{teks:'Keempat sisi sama panjang',nilai:'B'},{teks:'Sudut siku-siku',nilai:'C'},{teks:'Diagonal berpotongan tegak lurus',nilai:'D'}], kunci: ['A','C'], gambar: '<i class="fas fa-square"></i><br>Persegi panjang' },
+        
+        // BS
+        { tipe: 'bs', teks: 'Bilangan 0 adalah bilangan cacah. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-circle"></i><br>Nol' },
+        { tipe: 'bs', teks: 'Rumus volume kerucut adalah 1/3 × π × r² × t. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-cone"></i><br>Kerucut' },
+    ];
+
+    // ====================  DATA SOAL PAKET 2 (by Hanzzy - Soal Baru) ====================
+    
+    // Soal Bahasa Indonesia Paket 2 (Teks baru)
+    const soalIndo2 = [
+        // Teks tentang Festival Budaya
+        { tipe: 'pg', teks: 'Bacalah teks berikut!\n\n"Festival budaya daerah diselenggarakan setiap tahun. Kegiatan ini bertujuan melestarikan tradisi yang mulai jarang dikenal generasi muda. Berbagai pertunjukan seni dan musik daerah ditampilkan. Kuliner khas juga menjadi daya tarik pengunjung. Festival ini memperkenalkan kekayaan budaya lokal."\n\nTujuan festival budaya adalah …', opsi: [{teks:'Menarik investor',nilai:'A'},{teks:'Melestarikan tradisi',nilai:'B'},{teks:'Meningkatkan politik',nilai:'C'},{teks:'Menghibur wisatawan asing',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-drum"></i><br>Festival' },
+        { tipe: 'pg', teks: 'Kegiatan yang ditampilkan dalam festival adalah …', opsi: [{teks:'Olahraga tradisional',nilai:'A'},{teks:'Pameran teknologi',nilai:'B'},{teks:'Seni dan kuliner daerah',nilai:'C'},{teks:'Pertunjukan film',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-utensils"></i><br>Kuliner' },
+        { tipe: 'pg', teks: 'Sasaran utama festival adalah …', opsi: [{teks:'Pejabat',nilai:'A'},{teks:'Generasi muda',nilai:'B'},{teks:'Investor',nilai:'C'},{teks:'Wisatawan asing',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-child"></i><br>Generasi muda' },
+        
+        // Teks tentang Kebiasaan Belajar
+        { tipe: 'pg', teks: 'Bacalah teks berikut!\n\n"Ani membiasakan diri belajar secara teratur setiap hari sepulang sekolah. Ia menyusun jadwal agar tugas dapat selesai tepat waktu. Di kelas, Ani aktif bertanya jika ada materi yang belum dipahami. Kebiasaan ini membuatnya lebih percaya diri. Nilai ulangan Ani pun terus meningkat."\n\nSikap Ani menunjukkan bahwa ia …', opsi: [{teks:'Malas',nilai:'A'},{teks:'Disiplin',nilai:'B'},{teks:'Pemalu',nilai:'C'},{teks:'Pendiam',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-clock"></i><br>Disiplin' },
+        { tipe: 'pg', teks: 'Manfaat kebiasaan belajar Ani adalah …', opsi: [{teks:'Nilai ulangan meningkat',nilai:'A'},{teks:'Banyak teman',nilai:'B'},{teks:'Sering liburan',nilai:'C'},{teks:'Jarang ke sekolah',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-chart-line"></i><br>Nilai' },
+        
+        // Teks tentang Sampah
+        { tipe: 'pg', teks: 'Bacalah teks berikut!\n\n"Masalah sampah plastik menjadi perhatian serius di kota-kota besar. Setiap hari, ribuan ton sampah plastik dihasilkan dari aktivitas rumah tangga dan industri. Sampah plastik sulit terurai dan dapat mencemari lingkungan. Salah satu solusinya adalah mengurangi penggunaan plastik sekali pakai."\n\nIde pokok paragraf tersebut adalah …', opsi: [{teks:'Aktivitas rumah tangga',nilai:'A'},{teks:'Masalah sampah plastik',nilai:'B'},{teks:'Solusi mengurangi plastik',nilai:'C'},{teks:'Pencemaran lingkungan',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-trash-alt"></i><br>Sampah' },
+        
+        // PGK
+        { tipe: 'pgk', teks: 'Cara mengatasi masalah sampah plastik adalah … (pilih semua yang benar)', opsi: [{teks:'Mengurangi penggunaan plastik sekali pakai',nilai:'A'},{teks:'Membakar sampah plastik',nilai:'B'},{teks:'Mendaur ulang sampah plastik',nilai:'C'},{teks:'Menggunakan tas belanja kain',nilai:'D'}], kunci: ['A','C','D'], gambar: '<i class="fas fa-recycle"></i><br>Daur ulang' },
+        
+        // BS
+        { tipe: 'bs', teks: 'Teks persuasi bertujuan untuk mempengaruhi pembaca. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-bullhorn"></i><br>Persuasi' },
+        { tipe: 'bs', teks: 'Sinonim kata "bahagia" adalah "sedih". (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-smile"></i><br>Bahagia' },
+    ];
+
+    // Soal Matematika Paket 2 (by Hanzzy - Soal baru)
+    const soalMat2 = [
+        { tipe: 'pg', teks: 'Hasil dari 25 + 15 × 2 - 10 adalah …\nA. 45\nB. 55\nC. 65\nD. 75', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-calculator"></i><br>Hitung' },
+        { tipe: 'pg', teks: 'Bilangan yang senilai dengan $\dfrac{8}{3+\sqrt{5}}$ adalah …\nA. $6-2\sqrt{5}$\nB. $6+2\sqrt{5}$\nC. $3-2\sqrt{5}$\nD. $3+2\sqrt{5}$', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-square-root-alt"></i><br>Merasionalkan' },
+        { tipe: 'pg', teks: 'Sebuah tangga dengan panjang 6 meter disandarkan pada dinding vertikal. Sudut yang dibentuk tangga dengan lantai adalah 60°. Tinggi dinding yang disentuh ujung atas tangga adalah …\nA. 3 meter\nB. $3\sqrt{2}$ meter\nC. $3\sqrt{3}$ meter\nD. $4\sqrt{2}$ meter', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-ladder"></i><br>Tangga' },
+        { tipe: 'pg', teks: 'Nilai dari sin 30° + cos 60° adalah …\nA. 0\nB. 1/2\nC. 1\nD. √3/2', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-angle-right"></i><br>Trigonometri' },
+        { tipe: 'pg', teks: 'Suku ke-15 dari barisan aritmetika dengan a1 = 7 dan d = 4 adalah …\nA. 63\nB. 67\nC. 71\nD. 75', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-chart-line"></i><br>Barisan' },
+        { tipe: 'pg', teks: 'Dalam sebuah kantong terdapat 4 bola merah, 3 bola putih, dan 5 bola biru. Jika diambil satu bola secara acak, peluang terambil bola putih adalah …\nA. 1/3\nB. 1/4\nC. 1/6\nD. 1/12', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-dice"></i><br>Peluang' },
+        { tipe: 'pg', teks: 'Seseorang berdiri 40 m dari sebuah gedung. Sudut elevasi ke puncak gedung adalah 45°. Berapa tinggi gedung tersebut?\nA. 20 m\nB. 30 m\nC. 40 m\nD. 50 m', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'C', gambar: '<i class="fas fa-city"></i><br>Gedung' },
+        { tipe: 'pg', teks: 'Biaya pengiriman terdiri dari Rp50.000 ditambah Rp2.000 per kilometer. Jika anggaran maksimal Rp250.000, maka model matematis jarak x (kilometer) adalah …\nA. 50.000 + 2.000x = 250.000\nB. 50.000 + 2.000x > 250.000\nC. 50.000 + 2.000x < 250.000\nD. 50.000 + 2.000x ≤ 250.000', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'D', gambar: '<i class="fas fa-truck"></i><br>Pengiriman' },
+        { tipe: 'pg', teks: 'Diketahui himpunan A = {2, 4, 6, 8} dan B = {4, 8, 10}. Hasil dari irisan A dan B adalah …\nA. {2}\nB. {10}\nC. {2, 10}\nD. {4, 8}', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'D', gambar: '<i class="fas fa-circle"></i><br>Irisan' },
+        { tipe: 'pg', teks: 'Gradien garis dengan persamaan y = 2x + 3 adalah …\nA. -2\nB. 2\nC. 3\nD. -3', opsi: [{teks:'A',nilai:'A'},{teks:'B',nilai:'B'},{teks:'C',nilai:'C'},{teks:'D',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-chart-line"></i><br>Gradien' },
+        
+        // PGK
+        { tipe: 'pgk', teks: 'Manakah yang merupakan bilangan genap? (pilih semua)', opsi: [{teks:'2',nilai:'A'},{teks:'4',nilai:'B'},{teks:'6',nilai:'C'},{teks:'9',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-even"></i><br>Genap' },
+        { tipe: 'pgk', teks: 'Sifat-sifat kubus adalah … (pilih semua)', opsi: [{teks:'Memiliki 6 sisi',nilai:'A'},{teks:'Semua sisi berbentuk persegi',nilai:'B'},{teks:'Memiliki 12 rusuk',nilai:'C'},{teks:'Memiliki 8 titik sudut',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-cube"></i><br>Kubus' },
+        
+        // BS
+        { tipe: 'bs', teks: 'Hasil dari 2³ × 2² = 2⁶. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-exclamation"></i><br>Pangkat' },
+        { tipe: 'bs', teks: 'Bilangan -5 lebih kecil dari -3. (Benar/Salah)', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-minus-circle"></i><br>Negatif' },
+    ];
+
+    // ====================  FUNGSI LOGIN DAN STATE (Sama seperti sebelumnya) ====================
+    // (Kode fungsi login, token, penalty, fullscreen, timer, renderSoal, dll. sama persis dengan implementasi sebelumnya)
+    // Untuk menghemat space, fungsi-fungsi tersebut sudah diimplementasikan lengkap di file sebelumnya.
+    // Di sini saya akan menyertakan versi lengkap dengan semua fitur keamanan.
+    
+    // ====================  VARIABEL GLOBAL ====================
+    const loginPage = document.getElementById('loginPage');
+    const homePage = document.getElementById('homePage');
+    const tokenDisplay = document.getElementById('tokenDisplay');
+    const tokenInput = document.getElementById('tokenInput');
+    const namaInput = document.getElementById('namaInput');
+    const btnLogin = document.getElementById('btnLogin');
+    const loginError = document.getElementById('loginError');
+    const penaltyMessage = document.getElementById('penaltyMessage');
+    const namaDisplay = document.getElementById('namaDisplay');
+
+    // Elemen untuk Paket 1
+    const indoUser1 = document.getElementById('indoUser1');
+    const matUser1 = document.getElementById('matUser1');
+    const indoPage1 = document.getElementById('indoPage1');
+    const matPage1 = document.getElementById('matPage1');
+    const indoSoalContainer1 = document.getElementById('indoSoalContainer1');
+    const matSoalContainer1 = document.getElementById('matSoalContainer1');
+    const submitIndo1 = document.getElementById('submitIndo1');
+    const submitMat1 = document.getElementById('submitMat1');
+    const indoHasil1 = document.getElementById('indoHasil1');
+    const matHasil1 = document.getElementById('matHasil1');
+    const indoTimer1 = document.getElementById('indoTimer1');
+    const matTimer1 = document.getElementById('matTimer1');
+
+    // Elemen untuk Paket 2
+    const indoUser2 = document.getElementById('indoUser2');
+    const matUser2 = document.getElementById('matUser2');
+    const indoPage2 = document.getElementById('indoPage2');
+    const matPage2 = document.getElementById('matPage2');
+    const indoSoalContainer2 = document.getElementById('indoSoalContainer2');
+    const matSoalContainer2 = document.getElementById('matSoalContainer2');
+    const submitIndo2 = document.getElementById('submitIndo2');
+    const submitMat2 = document.getElementById('submitMat2');
+    const indoHasil2 = document.getElementById('indoHasil2');
+    const matHasil2 = document.getElementById('matHasil2');
+    const indoTimer2 = document.getElementById('indoTimer2');
+    const matTimer2 = document.getElementById('matTimer2');
+
+    // Tombol home
+    const btnIndo1 = document.getElementById('btnIndo1');
+    const btnMat1 = document.getElementById('btnMat1');
+    const btnIndo2 = document.getElementById('btnIndo2');
+    const btnMat2 = document.getElementById('btnMat2');
+    const modalSiap = document.getElementById('modalSiap');
+    const modalSelesai = document.getElementById('modalSelesai');
+    const btnMulaiUjian = document.getElementById('btnMulaiUjian');
+    const btnBatalSelesai = document.getElementById('batalSelesai');
+    const btnKonfirmasiSelesai = document.getElementById('konfirmasiSelesai');
+
+    // State
+    let isLocked = false;
+    let currentMapel = null;
+    let currentSoalArray = null;
+    let currentJawaban = null;
+    let currentTimerElement = null;
+    let currentHasilDiv = null;
+    let currentSubmitBtn = null;
+    let currentExitKey = '';
+    let selectedPaket = null;
+    let pendingSubmit = false;
+
+    let timerInterval = null;
+    let waktuTersisa = 90 * 60;
+
+    let awayTimer = null;
+    let isPenaltyActive = false;
+
+    // Inisialisasi jawaban untuk setiap paket
+    let jawabanIndo1 = new Array(soalIndo1.length).fill(null);
+    let jawabanMat1 = new Array(soalMat1.length).fill(null);
+    let jawabanIndo2 = new Array(soalIndo2.length).fill(null);
+    let jawabanMat2 = new Array(soalMat2.length).fill(null);
+
+    // ====================  FUNGSI PENALTY ====================
+    function checkPenalty() {
+        const penaltyEnd = localStorage.getItem('penaltyEnd');
+        if (penaltyEnd) {
+            const now = Date.now();
+            const remaining = parseInt(penaltyEnd) - now;
+            if (remaining > 0) {
+                isPenaltyActive = true;
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                penaltyMessage.style.display = 'block';
+                penaltyMessage.innerHTML = `⚠️ Anda terkena sanksi 6 menit karena keluar paksa. Silakan tunggu ${minutes} menit ${seconds} detik.`;
+                
+                const countdown = setInterval(() => {
+                    const remainingNow = parseInt(localStorage.getItem('penaltyEnd')) - Date.now();
+                    if (remainingNow <= 0) {
+                        clearInterval(countdown);
+                        penaltyMessage.style.display = 'none';
+                        isPenaltyActive = false;
+                        localStorage.removeItem('penaltyEnd');
+                    } else {
+                        const mins = Math.floor(remainingNow / 60000);
+                        const secs = Math.floor((remainingNow % 60000) / 1000);
+                        penaltyMessage.innerHTML = `⚠️ Anda terkena sanksi 6 menit karena keluar paksa. Silakan tunggu ${mins} menit ${secs} detik.`;
+                    }
+                }, 1000);
+                return true;
+            } else {
+                localStorage.removeItem('penaltyEnd');
+                isPenaltyActive = false;
+            }
+        }
+        return false;
+    }
+
+    // ====================  FUNGSI DETEKSI PELANGGARAN ====================
+    function startViolationDetection() {
+        document.addEventListener('visibilitychange', onVisibilityChange);
+        window.addEventListener('blur', onBlur);
+        window.addEventListener('focus', onFocus);
+    }
+
+    function stopViolationDetection() {
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        window.removeEventListener('blur', onBlur);
+        window.removeEventListener('focus', onFocus);
+        if (awayTimer) clearTimeout(awayTimer);
+    }
+
+    function onVisibilityChange() {
+        if (document.hidden) {
+            if (isLocked && currentMapel) {
+                awayTimer = setTimeout(() => {
+                    applyPenalty();
+                }, 2000);
+            }
+        } else {
+            if (awayTimer) clearTimeout(awayTimer);
+        }
+    }
+
+    function onBlur() {
+        if (isLocked && currentMapel) {
+            awayTimer = setTimeout(() => {
+                applyPenalty();
+            }, 2000);
+        }
+    }
+
+    function onFocus() {
+        if (awayTimer) clearTimeout(awayTimer);
+    }
+
+    function applyPenalty() {
+        if (!isLocked || !currentMapel || isPenaltyActive) return;
+
+        hentikanTimer();
+        
+        // Reset semua jawaban
+        jawabanIndo1.fill(null);
+        jawabanMat1.fill(null);
+        jawabanIndo2.fill(null);
+        jawabanMat2.fill(null);
+        
+        const penaltyEnd = Date.now() + 6 * 60 * 1000;
+        localStorage.setItem('penaltyEnd', penaltyEnd);
+        
+        exitFullscreen();
+        
+        setLock(false);
+        currentMapel = null;
+        homePage.style.display = 'none';
+        indoPage1.style.display = 'none';
+        matPage1.style.display = 'none';
+        indoPage2.style.display = 'none';
+        matPage2.style.display = 'none';
+        loginPage.style.display = 'block';
+        
+        checkPenalty();
+        alert('⚠️ Anda keluar paksa dari ujian. Jawaban di-reset dan Anda mendapat sanksi 6 menit tidak bisa mengerjakan.');
+    }
+
+    // ====================  FUNGSI LOGIN ====================
+    function generateToken() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let token = '';
+        for (let i = 0; i < 6; i++) {
+            token += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return token;
+    }
+
+    let currentToken = generateToken();
+    tokenDisplay.textContent = currentToken;
+
+    const tglSelect = document.getElementById('tgl');
+    const blnSelect = document.getElementById('bln');
+    const thnSelect = document.getElementById('thn');
+
+    for (let i = 1; i <= 31; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        tglSelect.appendChild(option);
+    }
+    for (let i = 1; i <= 12; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        blnSelect.appendChild(option);
+    }
+    for (let i = 1980; i <= 2010; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        thnSelect.appendChild(option);
+    }
+
+    btnLogin.addEventListener('click', () => {
+        if (checkPenalty()) {
+            loginError.textContent = 'Anda masih dalam masa sanksi. Silakan tunggu.';
+            return;
+        }
+        
+        const inputToken = tokenInput.value.trim().toUpperCase();
+        const nama = namaInput.value.trim();
+        const gender = document.querySelector('input[name="gender"]:checked')?.value;
+        const tgl = tglSelect.value;
+        const bln = blnSelect.value;
+        const thn = thnSelect.value;
+
+        if (inputToken === '') {
+            loginError.textContent = 'Token harus diisi.';
+            return;
+        }
+        if (nama === '') {
+            loginError.textContent = 'Nama harus diisi.';
+            return;
+        }
+        if (!gender) {
+            loginError.textContent = 'Pilih jenis kelamin.';
+            return;
+        }
+        if (!tgl || !bln || !thn) {
+            loginError.textContent = 'Tanggal lahir harus lengkap.';
+            return;
+        }
+        if (inputToken !== currentToken) {
+            loginError.textContent = 'Token salah. Silakan coba lagi.';
+            return;
+        }
+
+        const userData = { nama, gender, tgl, bln, thn };
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        loginError.textContent = '';
+        namaDisplay.textContent = nama;
+        indoUser1.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+        matUser1.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+        indoUser2.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+        matUser2.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+
+        loginPage.style.display = 'none';
+        homePage.style.display = 'block';
+    });
+
+    // ====================  FUNGSI PENGUNCIAN ====================
+    function setLock(lock) {
+        isLocked = lock;
+        if (lock) {
+            window.onbeforeunload = (e) => {
+                e.preventDefault();
+                e.returnValue = '⚠️ Ujian masih berlangsung! Gunakan KEY untuk keluar.';
+                return '⚠️ Ujian masih berlangsung! Gunakan KEY untuk keluar.';
+            };
+            history.pushState(null, null, location.href);
+            window.addEventListener('popstate', preventBack);
+        } else {
+            window.onbeforeunload = null;
+            window.removeEventListener('popstate', preventBack);
+        }
+    }
+
+    function preventBack() {
+        if (isLocked) {
+            history.pushState(null, null, location.href);
+            alert('🚫 Tombol back diblokir!');
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (!isLocked) return;
+        const key = e.key;
+        const ctrl = e.ctrlKey;
+        const shift = e.shiftKey;
+        const alt = e.altKey;
+        const blocked = [
+            key === 'F12',
+            ctrl && shift && (key === 'I' || key === 'J' || key === 'C'),
+            ctrl && key === 'U',
+            key === 'F5',
+            ctrl && (key === 'r' || key === 'R'),
+            ctrl && shift && (key === 'r' || key === 'R'),
+            ctrl && (key === 'w' || key === 'W'),
+            ctrl && (key === 'f4' || key === 'F4'),
+            alt && (key === 'F4'),
+            ctrl && (key === 't' || key === 'T' || key === 'n' || key === 'N'),
+            ctrl && (key === 'p' || key === 'P'),
+            ctrl && (key === 's' || key === 'S'),
+            alt && (key === 'ArrowLeft' || key === 'ArrowRight'),
+            key === 'PrintScreen'
+        ];
+        if (blocked.includes(true)) {
+            e.preventDefault();
+            alert('🔒 Akses ditolak!');
+            return false;
+        }
+        if (ctrl || alt) {
+            e.preventDefault();
+            alert('🔒 Tombol kombinasi diblokir.');
+            return false;
+        }
+    });
+
+    document.addEventListener('contextmenu', (e) => { if (isLocked) e.preventDefault(); });
+    document.addEventListener('copy', (e) => { if (isLocked) e.preventDefault(); });
+    document.addEventListener('paste', (e) => { if (isLocked) e.preventDefault(); });
+
+    setInterval(() => {
+        if (isLocked) {
+            const widthThreshold = window.outerWidth - window.innerWidth > 200;
+            const heightThreshold = window.outerHeight - window.innerHeight > 200;
+            if (widthThreshold || heightThreshold) {
+                alert('🔒 DevTools terdeteksi!');
+                applyPenalty();
+            }
+        }
+    }, 1000);
+
+    function openFullscreen() {
+        let elem = document.documentElement;
+        if (elem.requestFullscreen) elem.requestFullscreen();
+        else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+        else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+    }
+
+    function exitFullscreen() {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+
+    // ====================  FUNGSI TIMER ====================
+    function formatWaktu(detik) {
+        let jam = Math.floor(detik / 3600);
+        let menit = Math.floor((detik % 3600) / 60);
+        let det = detik % 60;
+        return `${jam.toString().padStart(2,'0')}:${menit.toString().padStart(2,'0')}:${det.toString().padStart(2,'0')}`;
+    }
+
+    function mulaiTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        waktuTersisa = 90 * 60;
+        if (currentTimerElement) currentTimerElement.textContent = formatWaktu(waktuTersisa);
+
+        timerInterval = setInterval(() => {
+            if (waktuTersisa <= 0) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                paksaSubmit();
+                return;
+            }
+            waktuTersisa--;
+            if (currentTimerElement) currentTimerElement.textContent = formatWaktu(waktuTersisa);
+        }, 1000);
+    }
+
+    function hentikanTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function paksaSubmit() {
+        if (currentSubmitBtn) {
+            currentSubmitBtn.style.display = 'none';
+            tampilkanHasil();
+        }
+    }
+
+    // ====================  FUNGSI RENDER SOAL ====================
+    function renderSoal(container, mapel, soalArray, jawabanArray) {
+        let html = '';
+        soalArray.forEach((soal, idx) => {
+            const nomor = idx + 1;
+            let tipeLabel = soal.tipe === 'pg' ? 'Pilihan Ganda' : (soal.tipe === 'pgk' ? 'PG Kompleks' : 'Benar/Salah');
+            html += `<div class="soal-card" data-nomor="${idx}" data-tipe="${soal.tipe}">`;
+            html += `<div class="soal-header"><div class="soal-nomor">${nomor}</div><div class="soal-tipe">${tipeLabel}</div></div>`;
+            if (soal.gambar) html += `<div class="soal-gambar">${soal.gambar}</div>`;
+            html += `<div class="soal-teks">${soal.teks}</div>`;
+            html += `<div class="opsi">`;
+
+            soal.opsi.forEach((opt, optIdx) => {
+                const inputType = (soal.tipe === 'pgk') ? 'checkbox' : 'radio';
+                const name = `opt_${mapel}_${idx}`;
+                let checked = false;
+                if (jawabanArray[idx] !== null) {
+                    if (soal.tipe === 'pgk') checked = jawabanArray[idx].includes(opt.nilai);
+                    else if (soal.tipe === 'pg') checked = (jawabanArray[idx] === opt.nilai);
+                    else checked = (jawabanArray[idx] === opt.nilai);
+                }
+                html += `<div class="opsi-item"><input type="${inputType}" name="${name}" value="${opt.nilai}" id="${name}_${optIdx}" ${checked ? 'checked' : ''}><label for="${name}_${optIdx}">${opt.teks}</label></div>`;
+            });
+            html += `</div></div>`;
+        });
+        container.innerHTML = html;
+
+        container.querySelectorAll('.soal-card').forEach((item) => {
+            const nomor = parseInt(item.dataset.nomor);
+            const tipe = item.dataset.tipe;
+            const opsiDiv = item.querySelector('.opsi');
+            opsiDiv.addEventListener('change', (e) => {
+                if (tipe === 'pgk') {
+                    const checkedValues = [];
+                    opsiDiv.querySelectorAll('input[type=checkbox]:checked').forEach(cb => checkedValues.push(cb.value));
+                    jawabanArray[nomor] = checkedValues;
+                } else {
+                    const selected = opsiDiv.querySelector('input[type=radio]:checked');
+                    if (selected) {
+                        const nilai = selected.value;
+                        if (tipe === 'bs') {
+                            jawabanArray[nomor] = (nilai === 'true');
+                        } else {
+                            jawabanArray[nomor] = nilai;
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    function hitungSkor(soalArray, jawabanArray) {
+        let benar = 0;
+        for (let i = 0; i < soalArray.length; i++) {
+            const soal = soalArray[i];
+            const jawab = jawabanArray[i];
+            if (jawab === null) continue;
+            if (soal.tipe === 'pg') {
+                if (jawab === soal.kunci) benar++;
+            } else if (soal.tipe === 'pgk') {
+                const kunciSet = new Set(soal.kunci);
+                const jawabSet = new Set(jawab);
+                if (kunciSet.size === jawabSet.size && [...kunciSet].every(k => jawabSet.has(k))) benar++;
+            } else {
+                if (jawab === soal.kunci) benar++;
+            }
+        }
+        return benar;
+    }
+
+    function tampilkanHasil() {
+        hentikanTimer();
+        const skor = hitungSkor(currentSoalArray, currentJawaban);
+        const totalSoal = currentSoalArray.length;
+        const persen = (skor / totalSoal * 100).toFixed(2);
+        const randomKey = 'HANZZ-' + Math.random().toString(36).substring(2,10).toUpperCase();
+        currentExitKey = randomKey;
+
+        sessionStorage.removeItem('examActive');
+
+        let html = `
+            <div class="nilai-box">Skor: ${skor}/${totalSoal} (${persen}%)</div>
+            <div class="key-area">
+                <div style="font-size:1.3rem;">🔑 KELUAR KEY</div>
+                <div class="key-string">${randomKey}</div>
+                <button class="copyKeyBtn" style="background:#2563eb; color:white; border:none; padding:12px 30px; border-radius:40px; margin-top:10px; cursor:pointer;">📋 Salin Key</button>
+            </div>
+            <div class="exit-form">
+                <input type="text" id="exitKeyInput" placeholder="masukkan key keluar">
+                <button id="exitBtn">🚪 KELUAR UJIAN</button>
+            </div>
+            <div class="peringatan">⚠️ Key salah tidak bisa keluar</div>
+        `;
+        currentHasilDiv.innerHTML = html;
+        currentHasilDiv.style.display = 'block';
+
+        document.querySelectorAll(`#${currentMapel}Page .opsi input`).forEach(inp => inp.disabled = true);
+
+        const copyBtn = currentHasilDiv.querySelector('.copyKeyBtn');
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(randomKey).then(() => alert('Key disalin!'));
+        });
+
+        const exitBtn = currentHasilDiv.querySelector('#exitBtn');
+        const exitInput = currentHasilDiv.querySelector('#exitKeyInput');
+        exitBtn.addEventListener('click', () => {
+            if (exitInput.value.trim() === currentExitKey) {
+                alert('✅ Key benar. Kembali ke home.');
+                exitFullscreen();
+                setLock(false);
+                stopViolationDetection();
+                currentMapel = null;
+                homePage.style.display = 'block';
+                indoPage1.style.display = 'none';
+                matPage1.style.display = 'none';
+                indoPage2.style.display = 'none';
+                matPage2.style.display = 'none';
+                indoHasil1.style.display = 'none';
+                matHasil1.style.display = 'none';
+                indoHasil2.style.display = 'none';
+                matHasil2.style.display = 'none';
+                submitIndo1.style.display = 'block';
+                submitMat1.style.display = 'block';
+                submitIndo2.style.display = 'block';
+                submitMat2.style.display = 'block';
+                indoTimer1.textContent = '01:30:00';
+                matTimer1.textContent = '01:30:00';
+                indoTimer2.textContent = '01:30:00';
+                matTimer2.textContent = '01:30:00';
+                renderSoal(indoSoalContainer1, 'indo1', soalIndo1, jawabanIndo1);
+                renderSoal(matSoalContainer1, 'mat1', soalMat1, jawabanMat1);
+                renderSoal(indoSoalContainer2, 'indo2', soalIndo2, jawabanIndo2);
+                renderSoal(matSoalContainer2, 'mat2', soalMat2, jawabanMat2);
+            } else {
+                alert('❌ Key salah!');
+            }
+        });
+    }
+
+    // ====================  EVENT PAKET ====================
+    function pilihPaket(mapel, paket, soalArray, jawabanArray, timerElement, hasilDiv, submitBtn, pageElement) {
+        selectedPaket = {
+            mapel: mapel + paket,
+            soalArray,
+            jawabanArray,
+            timerElement,
+            hasilDiv,
+            submitBtn,
+            pageElement
+        };
+        modalSiap.classList.add('active');
+    }
+
+    btnIndo1.addEventListener('click', () => pilihPaket('indo', '1', soalIndo1, jawabanIndo1, indoTimer1, indoHasil1, submitIndo1, indoPage1));
+    btnMat1.addEventListener('click', () => pilihPaket('mat', '1', soalMat1, jawabanMat1, matTimer1, matHasil1, submitMat1, matPage1));
+    btnIndo2.addEventListener('click', () => pilihPaket('indo', '2', soalIndo2, jawabanIndo2, indoTimer2, indoHasil2, submitIndo2, indoPage2));
+    btnMat2.addEventListener('click', () => pilihPaket('mat', '2', soalMat2, jawabanMat2, matTimer2, matHasil2, submitMat2, matPage2));
+
+    btnMulaiUjian.addEventListener('click', () => {
+        if (!selectedPaket) return;
+        modalSiap.classList.remove('active');
+        openFullscreen();
+
+        homePage.style.display = 'none';
+        indoPage1.style.display = 'none';
+        matPage1.style.display = 'none';
+        indoPage2.style.display = 'none';
+        matPage2.style.display = 'none';
+        selectedPaket.pageElement.style.display = 'block';
+
+        currentMapel = selectedPaket.mapel;
+        currentSoalArray = selectedPaket.soalArray;
+        currentJawaban = selectedPaket.jawabanArray;
+        currentTimerElement = selectedPaket.timerElement;
+        currentHasilDiv = selectedPaket.hasilDiv;
+        currentSubmitBtn = selectedPaket.submitBtn;
+
+        renderSoal(selectedPaket.pageElement.querySelector('.soal-wrapper'), currentMapel, currentSoalArray, currentJawaban);
+
+        mulaiTimer();
+        sessionStorage.setItem('examActive', currentMapel);
+        setLock(true);
+        startViolationDetection();
+    });
+
+    // ====================  MODAL SELESAI ====================
+    function showModalSelesai() {
+        if (!currentMapel) return;
+        modalSelesai.classList.add('active');
+    }
+
+    btnBatalSelesai.addEventListener('click', () => {
+        modalSelesai.classList.remove('active');
+    });
+
+    btnKonfirmasiSelesai.addEventListener('click', () => {
+        modalSelesai.classList.remove('active');
+        if (currentSubmitBtn) {
+            currentSubmitBtn.style.display = 'none';
+            hentikanTimer();
+            tampilkanHasil();
+        }
+    });
+
+    submitIndo1.addEventListener('click', showModalSelesai);
+    submitMat1.addEventListener('click', showModalSelesai);
+    submitIndo2.addEventListener('click', showModalSelesai);
+    submitMat2.addEventListener('click', showModalSelesai);
+
+    // ====================  RENDER AWAL ====================
+    renderSoal(indoSoalContainer1, 'indo1', soalIndo1, jawabanIndo1);
+    renderSoal(matSoalContainer1, 'mat1', soalMat1, jawabanMat1);
+    renderSoal(indoSoalContainer2, 'indo2', soalIndo2, jawabanIndo2);
+    renderSoal(matSoalContainer2, 'mat2', soalMat2, jawabanMat2);
+
+    checkPenalty();
+})();
+</script>
+</body>
+</html>
